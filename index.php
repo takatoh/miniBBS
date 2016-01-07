@@ -42,6 +42,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>mini BBS</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <div id="container">
@@ -52,10 +53,12 @@
       <div id="main">
         <div id="post_form">
           <form method="POST" action="index.php">
-            Name: <input type="text" name="name" value="no name" /><br />
-            Subject: <input type="text" name="subject" value="untitled" /><br />
-            Content: <textarea name="content" rows=8 cols=50 /></textarea><br />
-            <input type="submit" value="Post" />
+            <table>
+              <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" value="no name" /></td></tr>
+              <tr><td class="col1">Subject:</td><td class="col2"><input type="text" name="subject" value="untitled" /></td></tr>
+              <tr><td class="col1">Content:</td><td class="col2"><textarea name="content" rows=8 cols=50 /></textarea></td></tr>
+              <tr><td class="col1"><input type="submit" value="Post" /></td></tr>
+            </table>
           </form>
         </div>
 

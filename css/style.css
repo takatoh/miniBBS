@@ -1,0 +1,25 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+
+  background-color: wheat;
+}
+
+#container {
+  width: 600px;
+  margin: 0px auto;
+}
+
+#header {
+  text-align: center;
+}
+
+#post_form {
+  padding: 10px;
+  border: solid 1px gray;
+}
+
+#post_form table td.col1 {
+  width: 100px;
+}
