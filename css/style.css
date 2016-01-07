@@ -2,7 +2,6 @@ body {
   margin: 0px;
   padding: 0px;
   font-family: Helvetica, Verdana, Arial, sans-serif;
-
   background-color: wheat;
 }
 
@@ -18,8 +17,16 @@ body {
 #post_form {
   padding: 10px;
   border: solid 1px gray;
+  background-color: ivory;
 }
 
 #post_form table td.col1 {
   width: 100px;
+}
+
+.message {
+  margin-top: 10px;
+  padding: 10px;
+  border: solid 1px gray;
+  background-color: ivory;
 }

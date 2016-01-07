@@ -70,7 +70,6 @@
               <p>
                 <?php echo $message->content ?>
               </p>
-              <hr />
             </div>
             <?php } ?>
           </div>
