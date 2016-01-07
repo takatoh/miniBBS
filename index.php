@@ -8,6 +8,26 @@
       array_push($files, $f);
     }
   }
+
+  $files = files_sort_by_mtime($files);
+
+
+  function files_sort_by_mtime($files) {
+    usort($files, "order_by_mtime");
+    return $files;
+  }
+
+  function order_by_mtime($a, $b) {
+    $mtime_a = filemtime($a);
+    $mtime_b = filemtime($b);
+    if ($mtime_a > $mtime_b) {
+      return -1;
+    } else if ($mtime_a < $mtime_b) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 ?>
 <html>
   <head>
