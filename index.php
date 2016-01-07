@@ -14,6 +14,7 @@
   $files = files_sort_by_mtime($files);
   $messages = array_map("message_new", $files);
 ?>
+<!DOCTYPE HTML>
 <html>
   <head>
     <title>mini BBS</title>
