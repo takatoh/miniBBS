@@ -1,3 +1,14 @@
+<?php
+  $dir = opendir('data');
+  $files = array();
+
+  while (false !== ($f = readdir($dir))) {
+    $f = 'data/' . $f;
+    if (is_file($f)) {
+      array_push($files, $f);
+    }
+  }
+?>
 <html>
   <head>
     <title>mini BBS</title>
@@ -16,6 +27,14 @@
             Content: <textarea name="content" rows=8 cols=50 /></textarea><br />
             <input type="submit" value="Post" />
           </form>
+        </div>
+
+        <div id="messages">
+          <ol>
+            <?php foreach ($files as $file) { ?>
+            <li><?php echo $file; ?></li>
+            <?php } ?>
+          </ol>
         </div>
 
       </div>
