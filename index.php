@@ -10,6 +10,7 @@
   }
 
   $files = files_sort_by_mtime($files);
+  $messages = array_map("message_new", $files);
 
 
   function files_sort_by_mtime($files) {
@@ -27,6 +28,39 @@
     } else {
       return 0;
     }
+  }
+
+
+  // Message class
+  class Message {
+    public $id;
+    public $name;
+    public $subject;
+    public $content = "";
+
+    function __construct($file) {
+      $contents = file_get_contents($file);
+      $items = explode("---- comment\n", $contents);
+      $mes = rtrim(array_shift($items));
+      $lines = explode("\n", $mes);
+      array_shift($lines);
+      $id = array_shift($lines);
+      $id = mb_ereg_replace("id: ", "", $id);
+      $this->id = $id;
+      $name = array_shift($lines);
+      $name = mb_ereg_replace("name: ", "", $name);
+      $this->name = $name;
+      $subject = array_shift($lines);
+      $subject = mb_ereg_replace("subject: ", "", $subject);
+      $this->subject = $subject;
+      foreach ($lines as $line) {
+        $this->content = $this->content . $line . "<br>";
+      }
+    }
+  }
+
+  function message_new($file) {
+    return new Message($file);
   }
 ?>
 <html>
@@ -50,11 +84,17 @@
         </div>
 
         <div id="messages">
-          <ol>
-            <?php foreach ($files as $file) { ?>
-            <li><?php echo $file; ?></li>
+            <?php foreach ($messages as $message) { ?>
+            <div class="message">
+              <span>[<?php echo $message->id ?>]</span> <span><?php echo $message->subject ?></span><br />
+              <span><?php echo $message->name ?></span><br />
+              <p>
+                <?php echo $message->content ?>
+              </p>
+              <hr />
+            </div>
             <?php } ?>
-          </ol>
+          </div>
         </div>
 
       </div>
