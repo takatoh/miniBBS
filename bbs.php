@@ -88,6 +88,8 @@
       foreach ($lines as $line) {
         $this->content = $this->content . $line . "<br>";
       }
+      $comments = array_map('comment_parse', $items);
+      $this->comments = $comments;
     }
 
     function add_comment($comment) {
@@ -140,5 +142,11 @@
       }
     }
   }   // end of class Comment
+
+  function comment_parse($str) {
+    $comment = new Comment();
+    $comment->parse($str);
+    return $comment;
+  }
 
 ?>

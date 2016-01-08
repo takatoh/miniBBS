@@ -13,7 +13,8 @@
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['message_id'])) {
-      $message_file = "data/" . sprintf("%04d", $message_id) . ".mes";
+      $message_file = "data/" . sprintf("%04d", $_POST['message_id']) . ".mes";
+      echo $message_file;
       $message = new Message();
       $message->load_file($message_file);
       $comment = new Comment($_POST['name'], $_POST['content']);
@@ -78,6 +79,15 @@
                 <?php echo $message->timestamp ?>
                 <span><a href="comment.php?message_id=<?php echo $message->id ?>">Reply</a></span>
               </div>
+              <?php foreach ($message->comments as $comment) { ?>
+                <div class="comment">
+                  <span><?php echo $comment->id ?>.</span> <span><?php echo $comment->name ?></span><br />
+                  <p>
+                    <?php echo $comment->content ?>
+                  </p>
+                  <div class="comment_footer"><?php echo $comment->timestamp ?></div>
+                </div>
+              <?php } ?>
             </div>
             <?php } ?>
           </div>
