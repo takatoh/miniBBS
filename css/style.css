@@ -36,9 +36,15 @@ body {
   background-color: ivory;
 }
 
-.message .message_footer {
+.message_footer {
   font-size: 0.8em;
   text-align: right;
+}
+
+.message_footer span a {
+  padding: 0.2em;
+  border: solid 1px gray;
+  text-decoration: none;
 }
 
 #footer {

@@ -67,6 +67,7 @@
               </p>
               <div class="message_footer">
                 <?php echo $message->timestamp ?>
+                <span><a href="comment.php?message_id=<?php echo $message->id ?>">Reply</a></span>
               </div>
             </div>
             <?php } ?>
