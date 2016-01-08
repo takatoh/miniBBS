@@ -52,6 +52,15 @@
           fwrite($fp, "subject: " . $this->subject . "\n");
           fwrite($fp, "timestamp: " . $this->timestamp . "\n");
           fwrite($fp, $this->content);
+
+          foreach ($this->comments as $comment) {
+            fwrite($fp, "\n\n---- comment\n");
+            fwrite($fp, "id: " . $comment->id . "\n");
+            fwrite($fp, "name: " . $comment->name . "\n");
+            fwrite($fp, "timestamp: " . $comment->timestamp . "\n");
+            fwrite($fp, $comment->content . "\n");
+          }
+
           flock($fp, LOCK_UN);
         }
       }
