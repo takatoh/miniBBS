@@ -37,7 +37,7 @@
       $this->id = $id;
       $this->name = $name;
       $this->subject = $subject;
-//      $this->timestamp = date('Y-m-d H:i:s');
+      $this->timestamp = date('Y-m-d H:i:s');
       $this->content = $content;
       $this->comments = array();
     }
@@ -50,7 +50,7 @@
           fwrite($fp, "id: " . $this->id . "\n");
           fwrite($fp, "name: " . $this->name . "\n");
           fwrite($fp, "subject: " . $this->subject . "\n");
-//          fwrite($fp, "timestamp: " . $this->timestamp . "\n");
+          fwrite($fp, "timestamp: " . $this->timestamp . "\n");
           fwrite($fp, $this->content);
           flock($fp, LOCK_UN);
         }
@@ -73,6 +73,9 @@
       $subject = array_shift($lines);
       $subject = mb_ereg_replace("subject: ", "", $subject);
       $this->subject = $subject;
+      $timestamp = array_shift($lines);
+      $timestamp = mb_ereg_replace("timestamp: ", "", $timestamp);
+      $this->timestamp = $timestamp;
       foreach ($lines as $line) {
         $this->content = $this->content . $line . "<br>";
       }
