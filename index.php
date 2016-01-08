@@ -65,6 +65,9 @@
               <p>
                 <?php echo $message->content ?>
               </p>
+              <div class="message_footer">
+                <?php echo $message->timestamp ?>
+              </div>
             </div>
             <?php } ?>
           </div>

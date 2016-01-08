@@ -36,6 +36,11 @@ body {
   background-color: ivory;
 }
 
+.message .message_footer {
+  font-size: 0.8em;
+  text-align: right;
+}
+
 #footer {
   padding-top: 20px;
   height: 50px;
