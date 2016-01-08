@@ -1,7 +1,8 @@
 <?php
   require_once 'bbs.php';
+  require_once 'config.php';
 
-  $message_file = "data/" . sprintf("%04d", $_GET['message_id']) . ".mes";
+  $message_file = "$bbsDataDir/" . sprintf("%04d", $_GET['message_id']) . ".mes";
   $message = new Message();
   $message->load_file($message_file);
 ?>
@@ -9,13 +10,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>mini BBS</title>
+    <title><?php echo $bbsTitle ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <div id="container">
       <div id="header">
-        <h1><a href="index.php">mini BBS</a></h1>
+        <h1><a href="index.php"><?php echo $bbsTitle ?></a></h1>
       </div>
 
       <div id="main">
@@ -42,12 +43,10 @@
         </div>
       </div>
 
-
-        <div id="footer">
-          <span>mini BBS</span>
-        </div>
-
+      <div id="footer">
+        <span>mini BBS</span>
       </div>
-    </dib>
+
+    </div>
   </body>
 </html>
