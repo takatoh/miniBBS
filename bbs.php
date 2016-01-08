@@ -80,12 +80,44 @@
         $this->content = $this->content . $line . "<br>";
       }
     }
-  }
+  }   // end of class Message
 
   function message_load($file) {
     $message = new Message();
     $message->load_file($file);
     return $message;
   }
+
+
+  // Comment class
+  class Comment {
+    public $id;
+    public $name;
+    public $timestamp;
+    public $content = "";
+
+    function __construct($name = '', $content = '') {
+      $this->name = $name;
+      $this->timestamp = date('Y-m-d H:i:s');
+      $this->content = $content;
+    }
+
+    function parse($str) {
+      $str = rtrim($str);
+      $lines = explode("\n", $str);
+      $id = array_shift($lines);
+      $id = mb_ereg_replace("id: ", "", $id);
+      $this->id = $id;
+      $name = array_shift($lines);
+      $name = mb_ereg_replace("name: ", "", $name);
+      $this->name = $name;
+      $timestamp = array_shift($lines);
+      $timestamp = mb_ereg_replace("timestamp: ", "", $timestamp);
+      $this->timestamp = $timestamp;
+      foreach ($lines as $line) {
+        $this->content = $this->content . $line . "\n";
+      }
+    }
+  }   // end of class Comment
 
 ?>
