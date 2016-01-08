@@ -47,6 +47,18 @@ body {
   text-decoration: none;
 }
 
+.comment {
+  margin-top: 10px;
+  margin-left: 100px;
+  padding: 5px;
+  border-top: dashed 1px gray;
+}
+
+.comment_footer {
+  font-size: 0.8em;
+  text-align: right;
+}
+
 #footer {
   padding-top: 20px;
   height: 50px;
