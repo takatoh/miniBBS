@@ -75,6 +75,10 @@
           </div>
         </div>
 
+        <div id="footer">
+          <span>mini BBS</span>
+        </div>
+
       </div>
     </dib>
   </body>
