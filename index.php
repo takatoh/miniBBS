@@ -35,7 +35,7 @@
   }
 
   $files = files_sort_by_mtime($files);
-  $messages = array_map("message_new", $files);
+  $messages = array_map("message_load", $files);
 ?>
 <!DOCTYPE HTML>
 <html>

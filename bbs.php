@@ -1,4 +1,5 @@
 <?php
+
 /*
  *  Utilities
  */
@@ -32,7 +33,16 @@
     public $subject;
     public $content = "";
 
-    function __construct($file) {
+    function __construct($id = 0, $name = '', $subject = '', $content = '') {
+      $this->id = $id;
+      $this->name = $name;
+      $this->subject = $subject;
+//      $this->timestamp = date('Y-m-d H:i:s');
+      $this->content = $content;
+      $this->comments = array();
+    }
+
+    function load_file($file) {
       $contents = file_get_contents($file);
       $items = explode("---- comment\n", $contents);
       $mes = rtrim(array_shift($items));
@@ -53,7 +63,10 @@
     }
   }
 
-  function message_new($file) {
-    return new Message($file);
+  function message_load($file) {
+    $message = new Message();
+    $message->load_file($file);
+    return $message;
   }
+
 ?>
