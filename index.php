@@ -47,7 +47,7 @@
   <body>
     <div id="container">
       <div id="header">
-        <h1>mini BBS</h1>
+        <h1><a href="index.php">mini BBS</a></h1>
       </div>
 
       <div id="main">

@@ -14,6 +14,11 @@ body {
   text-align: center;
 }
 
+#header a {
+  color: black;
+  text-decoration: none;
+}
+
 #post_form {
   padding: 10px;
   border: solid 1px gray;
