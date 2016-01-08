@@ -42,6 +42,22 @@
       $this->comments = array();
     }
 
+    function save($file) {
+      $fp = fopen($file, 'wb');
+      if ($fp) {
+        if (flock($fp, LOCK_EX)) {
+          fwrite($fp, "==== message\n");
+          fwrite($fp, "id: " . $this->id . "\n");
+          fwrite($fp, "name: " . $this->name . "\n");
+          fwrite($fp, "subject: " . $this->subject . "\n");
+//          fwrite($fp, "timestamp: " . $this->timestamp . "\n");
+          fwrite($fp, $this->content);
+          flock($fp, LOCK_UN);
+        }
+      }
+      fclose($fp);
+    }
+
     function load_file($file) {
       $contents = file_get_contents($file);
       $items = explode("---- comment\n", $contents);
