@@ -1,11 +1,12 @@
 <?php
   require_once 'bbs.php';
+  require_once 'config.php';
 
-  $dir = opendir('data');
+  $dir = opendir($bbsDataDir);
   $files = array();
 
   while (false !== ($f = readdir($dir))) {
-    $f = 'data/' . $f;
+    $f = "$bbsDataDir/" . $f;
     if (is_file($f)) {
       array_push($files, $f);
     }
@@ -13,7 +14,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['message_id'])) {
-      $message_file = "data/" . sprintf("%04d", $_POST['message_id']) . ".mes";
+      $message_file = "$bbsDataDir/" . sprintf("%04d", $_POST['message_id']) . ".mes";
       echo $message_file;
       $message = new Message();
       $message->load_file($message_file);
@@ -24,13 +25,13 @@
       if (count($files) > 0) {
         rsort($files);
         $matches = array();
-        preg_match("!data/(.+)\.mes!", $files[0], $matches);
+        preg_match("!$bbsDataDir/(.+)\.mes!", $files[0], $matches);
         $last_message_id = $matches[1];
         $new_message_id = $last_message_id + 1;
       } else {
         $new_message_id = 1;
       }
-      $new_message_file = "data/" . sprintf("%04d", $new_message_id) . ".mes";
+      $new_message_file = "$bbsDataDir/" . sprintf("%04d", $new_message_id) . ".mes";
 
       $message = new Message($new_message_id, $_POST['name'], $_POST['subject'], $_POST['content']);
       $message->save($new_message_file);
@@ -46,13 +47,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>mini BBS</title>
+    <title><?php echo $bbsTitle ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <div id="container">
       <div id="header">
-        <h1><a href="index.php">mini BBS</a></h1>
+        <h1><a href="index.php"><?php echo $bbsTitle ?></a></h1>
       </div>
 
       <div id="main">
