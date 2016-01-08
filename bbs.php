@@ -80,6 +80,18 @@
         $this->content = $this->content . $line . "<br>";
       }
     }
+
+    function add_comment($comment) {
+      $c = count($this->comments);
+      if ($c > 0) {
+        $last_comment_id = $this->comments[$c - 1]->id;
+        $comment_id = $last_comment_id + 1;
+      } else {
+        $comment_id = 1;
+      }
+      $comment->id = $comment_id;
+      array_push($this->comments, $comment);
+    }
   }   // end of class Message
 
   function message_load($file) {
