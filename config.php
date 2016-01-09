@@ -5,6 +5,9 @@
 $bbsTitle = "mini BBS";
 
 // Data dir
-$bbsDataDir = "data"
+$bbsDataDir = "data";
+
+// Display messages per page
+$bssMessagePerPage = 5;
 
 ?>
