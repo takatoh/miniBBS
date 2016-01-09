@@ -105,9 +105,9 @@
       </div>
 
       <div id="page_navi">
-        <?php if ($page > 1) { echo "<span><a href=\"index.php?page=", $page - 1, "\" />&#171; Prev</a></span>";} ?>
+        <?php if ($page > 1) { echo "<span><a href=\"index.php?page=", $page - 1, "\">&#171; Prev</a> </span>";} ?>
         <?php echo "<span>[ ", $page, " / ", $total_pages, " ]</span>"; ?>
-        <?php if ($page < $total_pages) { echo "<span><a href=\"index.php?page=", $page + 1, "\" />Next &#187;</a></span>";} ?>
+        <?php if ($page < $total_pages) { echo "<span> <a href=\"index.php?page=", $page + 1, "\">Next &#187;</a></span>";} ?>
       </div>
 
       <div id="footer">
