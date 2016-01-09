@@ -21,21 +21,23 @@
       $message->add_comment($comment);
       $message->save($message_file);
     } else {
-      if (count($files) > 0) {
-        rsort($files);
-        $matches = array();
-        preg_match("!$bbsDataDir/(.+)\.mes!", $files[0], $matches);
-        $last_message_id = $matches[1];
-        $new_message_id = $last_message_id + 1;
-      } else {
-        $new_message_id = 1;
+      if (mb_strlen(rtrim($_POST['content'])) > 0) {
+        if (count($files) > 0) {
+          rsort($files);
+          $matches = array();
+          preg_match("!$bbsDataDir/(.+)\.mes!", $files[0], $matches);
+          $last_message_id = $matches[1];
+          $new_message_id = $last_message_id + 1;
+        } else {
+          $new_message_id = 1;
+        }
+        $new_message_file = "$bbsDataDir/" . sprintf("%04d", $new_message_id) . ".mes";
+
+        $message = new Message($new_message_id, $_POST['name'], $_POST['subject'], $_POST['content']);
+        $message->save($new_message_file);
+
+        array_push($files, $new_message_file);
       }
-      $new_message_file = "$bbsDataDir/" . sprintf("%04d", $new_message_id) . ".mes";
-
-      $message = new Message($new_message_id, $_POST['name'], $_POST['subject'], $_POST['content']);
-      $message->save($new_message_file);
-
-      array_push($files, $new_message_file);
     }
   }
 
