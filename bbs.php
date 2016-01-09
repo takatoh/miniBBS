@@ -21,6 +21,10 @@
     }
   }
 
+  function h($str) {
+    return str_replace("\n", "<br />", $str);
+  }
+
 
 /*
  *  Classes
@@ -86,7 +90,7 @@
       $timestamp = mb_ereg_replace("timestamp: ", "", $timestamp);
       $this->timestamp = $timestamp;
       foreach ($lines as $line) {
-        $this->content = $this->content . $line . "<br>";
+        $this->content = $this->content . $line . "\n";
       }
       $comments = array_map('comment_parse', $items);
       $this->comments = $comments;

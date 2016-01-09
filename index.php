@@ -73,7 +73,7 @@
               <span>[<?php echo $message->id ?>]</span> <span><?php echo $message->subject ?></span><br />
               <span><?php echo $message->name ?></span><br />
               <p>
-                <?php echo $message->content ?>
+                <?php echo h($message->content) ?>
               </p>
               <div class="message_footer">
                 <?php echo $message->timestamp ?>
@@ -83,7 +83,7 @@
                 <div class="comment">
                   <span><?php echo $comment->id ?>.</span> <span><?php echo $comment->name ?></span><br />
                   <p>
-                    <?php echo $comment->content ?>
+                    <?php echo h($comment->content) ?>
                   </p>
                   <div class="comment_footer"><?php echo $comment->timestamp ?></div>
                 </div>

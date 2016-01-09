@@ -24,7 +24,7 @@
           <span>[<?php echo $message->id ?>]</span> <span><?php echo $message->subject ?></span><br />
           <span><?php echo $message->name ?></span><br />
           <p>
-            <?php echo $message->content ?>
+            <?php echo h($message->content) ?>
           </p>
           <div class="message_footer">
             <?php echo $message->timestamp ?>
