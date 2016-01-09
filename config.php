@@ -8,6 +8,6 @@ $bbsTitle = "mini BBS";
 $bbsDataDir = "data";
 
 // Display messages per page
-$bssMessagePerPage = 5;
+$bssMessagePerPage = 10;
 
 ?>
