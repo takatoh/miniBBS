@@ -66,6 +66,17 @@ body {
   text-align: right;
 }
 
+#page_navi {
+  height: 15px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+#page_navi span a {
+  text-decoration: none;
+  color: black;
+}
+
 #footer {
   padding-top: 20px;
   height: 50px;
