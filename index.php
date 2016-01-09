@@ -15,7 +15,6 @@
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['message_id'])) {
       $message_file = "$bbsDataDir/" . sprintf("%04d", $_POST['message_id']) . ".mes";
-      echo $message_file;
       $message = new Message();
       $message->load_file($message_file);
       $comment = new Comment($_POST['name'], $_POST['content']);
@@ -62,7 +61,7 @@
             <table>
               <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" value="no name" /></td></tr>
               <tr><td class="col1">Subject:</td><td class="col2"><input type="text" name="subject" value="untitled" /></td></tr>
-              <tr><td class="col1">Content:</td><td class="col2"><textarea name="content" rows=8 cols=50 /></textarea></td></tr>
+              <tr><td class="col1">Message:</td><td class="col2"><textarea name="content" rows=8 cols=50 /></textarea></td></tr>
               <tr><td class="col1"></td><td><input type="submit" value="Post" /></td></tr>
             </table>
           </form>

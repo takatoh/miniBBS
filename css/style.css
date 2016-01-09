@@ -27,6 +27,7 @@ body {
 
 #post_form table td.col1 {
   width: 100px;
+  vertical-align: top;
 }
 
 #post_form textarea {
