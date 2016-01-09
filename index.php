@@ -40,7 +40,12 @@
   }
 
   $files = files_sort_by_mtime($files);
-  $files = array_slice($files, 0, $bssMessagePerPage);
+  if (isset($_GET['page'])) {
+    $offset = ($_GET['page'] - 1) * $bssMessagePerPage;
+  } else {
+    $offset = 0;
+  }
+  $files = array_slice($files, $offset, $bssMessagePerPage);
   $messages = array_map("message_load", $files);
 ?>
 <!DOCTYPE HTML>
