@@ -111,7 +111,7 @@
       </div>
 
       <div id="footer">
-        <span>mini BBS</span>
+        <span>mini BBS <?php echo $bssVersion; ?></span>
       </div>
 
     </div>

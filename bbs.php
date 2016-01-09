@@ -1,6 +1,12 @@
 <?php
 
 /*
+ *  Version
+ */
+
+$bssVersion = "v1.0.0";
+
+/*
  *  Utilities
  */
 
