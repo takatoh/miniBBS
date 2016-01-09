@@ -43,10 +43,13 @@
 
   $files = files_sort_by_mtime($files);
   if (isset($_GET['page'])) {
-    $offset = ($_GET['page'] - 1) * $bssMessagePerPage;
+    $page = $_GET['page'];
+    $offset = ($page - 1) * $bssMessagePerPage;
   } else {
+    $page = 1;
     $offset = 0;
   }
+  $total_pages = ceil(count($files) / $bssMessagePerPage);
   $files = array_slice($files, $offset, $bssMessagePerPage);
   $messages = array_map("message_load", $files);
 ?>
@@ -99,6 +102,12 @@
           </div>
           <?php } ?>
         </div>
+      </div>
+
+      <div id="page_navi">
+        <?php if ($page > 1) { echo "<span><a href=\"index.php?page=", $page - 1, "\" />&#171; Prev</a></span>";} ?>
+        <?php echo "<span>[ ", $page, " / ", $total_pages, " ]</span>"; ?>
+        <?php if ($page < $total_pages) { echo "<span><a href=\"index.php?page=", $page + 1, "\" />Next &#187;</a></span>";} ?>
       </div>
 
       <div id="footer">
