@@ -31,6 +31,11 @@ $bssVersion = "v1.0.0";
     return str_replace("\n", "<br />", $str);
   }
 
+  function build_message_file_path($message_id) {
+    global $bbsDataDir;
+    return "$bbsDataDir/" . sprintf("%04d", $message_id) . ".mes";
+  }
+
 
 /*
  *  Classes

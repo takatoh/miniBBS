@@ -14,7 +14,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['message_id'])) {
-      $message_file = "$bbsDataDir/" . sprintf("%04d", $_POST['message_id']) . ".mes";
+      $message_file = build_message_file_path($_POST['message_id']);
       $message = new Message();
       $message->load_file($message_file);
       $comment = new Comment($_POST['name'], $_POST['content']);
@@ -31,11 +31,9 @@
         } else {
           $new_message_id = 1;
         }
-        $new_message_file = "$bbsDataDir/" . sprintf("%04d", $new_message_id) . ".mes";
-
+        $new_message_file = build_message_file_path($new_message_id);
         $message = new Message($new_message_id, $_POST['name'], $_POST['subject'], $_POST['content']);
         $message->save($new_message_file);
-
         array_push($files, $new_message_file);
       }
     }
@@ -62,6 +60,7 @@
   </head>
   <body>
     <div id="container">
+
       <div id="header">
         <h1><a href="index.php"><?php echo $bbsTitle ?></a></h1>
       </div>
