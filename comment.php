@@ -2,7 +2,7 @@
   require_once 'bbs.php';
   require_once 'config.php';
 
-  $message_file = "$bbsDataDir/" . sprintf("%04d", $_GET['message_id']) . ".mes";
+  $message_file = build_message_file_path($_GET['message_id']);
   $message = new Message();
   $message->load_file($message_file);
 ?>
