@@ -80,22 +80,22 @@
         <div id="messages">
           <?php foreach ($messages as $message) { ?>
           <div class="message">
-            <span>[<?php echo $message->id ?>]</span> <span><?php echo $message->subject ?></span><br />
-            <span><?php echo $message->name ?></span><br />
+            <span>[<?php echo $message->id; ?>]</span> <span><?php echo $message->subject; ?></span><br />
+            <span><?php echo $message->name; ?></span><br />
             <p>
-              <?php echo h($message->content) ?>
+              <?php echo h($message->content); ?>
             </p>
             <div class="message_footer">
-              <?php echo $message->timestamp ?>
-              <span><a href="comment.php?message_id=<?php echo $message->id ?>">Reply</a></span>
+              <?php echo $message->timestamp; ?>
+              <span><a href="comment.php?message_id=<?php echo $message->id; ?>">Reply</a></span>
             </div>
             <?php foreach ($message->comments as $comment) { ?>
               <div class="comment">
-                <span><?php echo $comment->id ?>.</span> <span><?php echo $comment->name ?></span><br />
+                <span><?php echo $comment->id; ?>.</span> <span><?php echo $comment->name; ?></span><br />
                 <p>
-                  <?php echo h($comment->content) ?>
+                  <?php echo h($comment->content); ?>
                 </p>
-                <div class="comment_footer"><?php echo $comment->timestamp ?></div>
+                <div class="comment_footer"><?php echo $comment->timestamp; ?></div>
               </div>
             <?php } ?>
           </div>
