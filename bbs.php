@@ -4,7 +4,7 @@
  *  Version
  */
 
-$bssVersion = "v1.0.0";
+  $bbsVersion = "v1.0.1";
 
 /*
  *  Utilities
