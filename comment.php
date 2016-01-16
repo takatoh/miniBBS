@@ -31,7 +31,7 @@
           </div>
         </div>
 
-        <div id="post_form">
+        <div id="comment_form">
           <form method="POST" action="index.php">
             <input type="hidden" name="message_id" value="<?php echo $message->id ?>"/>
             <table>

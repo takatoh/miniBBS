@@ -66,6 +66,18 @@ body {
   text-align: right;
 }
 
+#comment_form {
+  margin-top: 10px;
+  padding: 10px;
+  border: solid 1px gray;
+  background-color: ivory;
+}
+
+#comment_form table td.col1 {
+  width: 100px;
+  vertical-align: top;
+}
+
 #page_navi {
   height: 15px;
   padding-top: 5px;
