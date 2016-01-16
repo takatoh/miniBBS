@@ -42,13 +42,13 @@
   $files = files_sort_by_mtime($files);
   if (isset($_GET['page'])) {
     $page = $_GET['page'];
-    $offset = ($page - 1) * $bssMessagePerPage;
+    $offset = ($page - 1) * $bbsMessagePerPage;
   } else {
     $page = 1;
     $offset = 0;
   }
-  $total_pages = ceil(count($files) / $bssMessagePerPage);
-  $files = array_slice($files, $offset, $bssMessagePerPage);
+  $total_pages = ceil(count($files) / $bbsMessagePerPage);
+  $files = array_slice($files, $offset, $bbsMessagePerPage);
   $messages = array_map("message_load", $files);
 ?>
 <!DOCTYPE HTML>
