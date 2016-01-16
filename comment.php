@@ -29,6 +29,15 @@
           <div class="message_footer">
             <?php echo $message->timestamp ?>
           </div>
+          <?php foreach ($message->comments as $comment) { ?>
+            <div class="comment">
+              <span><?php echo $comment->id; ?>.</span> <span><?php echo $comment->name; ?></span><br />
+              <p>
+                <?php echo h($comment->content); ?>
+              </p>
+              <div class="comment_footer"><?php echo $comment->timestamp; ?></div>
+            </div>
+          <?php } ?>
         </div>
 
         <div id="comment_form">
