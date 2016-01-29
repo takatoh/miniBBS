@@ -14,14 +14,16 @@
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['message_id'])) {
-      $message_file = build_message_file_path($_POST['message_id']);
-      $message = new Message();
-      $message->load_file($message_file);
-      $name = $_POST['name'];
-      $name |= 'no name';
-      $comment = new Comment($name, $_POST['content']);
-      $message->add_comment($comment);
-      $message->save($message_file);
+      if (mb_strlen(rtrim($_POST['content'])) > 0) {
+        $message_file = build_message_file_path($_POST['message_id']);
+        $message = new Message();
+        $message->load_file($message_file);
+        $name = $_POST['name'];
+        $name |= 'no name';
+        $comment = new Comment($name, $_POST['content']);
+        $message->add_comment($comment);
+        $message->save($message_file);
+      }
     } else {
       if (mb_strlen(rtrim($_POST['content'])) > 0) {
         if (count($files) > 0) {
