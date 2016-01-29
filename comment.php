@@ -44,7 +44,7 @@
           <form method="POST" action="index.php">
             <input type="hidden" name="message_id" value="<?php echo $message->id; ?>"/>
             <table>
-              <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" value="no name" /></td></tr>
+              <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" placeholder="Your name" /></td></tr>
               <tr><td class="col1">Comment:</td><td class="col2"><textarea name="content" rows=8 cols=50 /></textarea></td></tr>
               <tr><td class="col1"></td><td><input type="submit" value="Post" /></td></tr>
             </table>
