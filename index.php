@@ -32,7 +32,11 @@
           $new_message_id = 1;
         }
         $new_message_file = build_message_file_path($new_message_id);
-        $message = new Message($new_message_id, $_POST['name'], $_POST['subject'], $_POST['content']);
+        $name = $_POST['name'];
+        $name |= 'no name';
+        $subject = $_POST['subject'];
+        $subject |= 'untitled';
+        $message = new Message($new_message_id, $name, $subject, $_POST['content']);
         $message->save($new_message_file);
         array_push($files, $new_message_file);
       }
@@ -69,8 +73,8 @@
         <div id="post_form">
           <form method="POST" action="index.php">
             <table>
-              <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" value="no name" /></td></tr>
-              <tr><td class="col1">Subject:</td><td class="col2"><input type="text" name="subject" value="untitled" /></td></tr>
+              <tr><td class="col1">Name:</td><td class="col2"><input type="text" name="name" placeholder="Your name" /></td></tr>
+              <tr><td class="col1">Subject:</td><td class="col2"><input type="text" name="subject" placeholder="Some subject" /></td></tr>
               <tr><td class="col1">Message:</td><td class="col2"><textarea name="content" rows=8 cols=50 /></textarea></td></tr>
               <tr><td class="col1"></td><td><input type="submit" value="Post" /></td></tr>
             </table>
