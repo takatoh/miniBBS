@@ -17,7 +17,9 @@
       $message_file = build_message_file_path($_POST['message_id']);
       $message = new Message();
       $message->load_file($message_file);
-      $comment = new Comment($_POST['name'], $_POST['content']);
+      $name = $_POST['name'];
+      $name |= 'no name';
+      $comment = new Comment($name, $_POST['content']);
       $message->add_comment($comment);
       $message->save($message_file);
     } else {
